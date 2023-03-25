@@ -51,7 +51,7 @@ class MainViewController: UIViewController {
 
     func setUpBackgroundsColors() {
         navigationController?.navigationBar.backgroundColor = .white
-        view.backgroundColor = UIColor(red: 0.938, green: 0.938, blue: 0.938, alpha: 1)
+        view.backgroundColor = UIColor.mainBackgroundColor()
     }
     
     func setUpConstraint() {

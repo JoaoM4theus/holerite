@@ -13,6 +13,7 @@
 		DC1ECB7C29CE68F90061A670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC1ECB7B29CE68F90061A670 /* Assets.xcassets */; };
 		DC1ECB7F29CE68F90061A670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1ECB7D29CE68F90061A670 /* LaunchScreen.storyboard */; };
 		DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8829CF2C710061A670 /* ResultViewController.swift */; };
+		DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8B29CF31350061A670 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DC1ECB7E29CE68F90061A670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC1ECB8029CE68F90061A670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1ECB8829CF2C710061A670 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		DC1ECB8B29CF31350061A670 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		DC1ECB7129CE68F70061A670 /* Holerite */ = {
 			isa = PBXGroup;
 			children = (
+				DC1ECB8A29CF31270061A670 /* Extensions */,
 				DC1ECB8729CF2C4A0061A670 /* Result */,
 				DC1ECB8629CF2C3D0061A670 /* Main */,
 				DC1ECB7229CE68F70061A670 /* AppDelegate.swift */,
@@ -81,6 +84,14 @@
 				DC1ECB8829CF2C710061A670 /* ResultViewController.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		DC1ECB8A29CF31270061A670 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC1ECB8B29CF31350061A670 /* UIColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 				DC1ECB7329CE68F70061A670 /* AppDelegate.swift in Sources */,
 				DC1ECB7529CE68F70061A670 /* SceneDelegate.swift in Sources */,
 				DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */,
+				DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@ class ResultViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .clear
         button.setTitle("FECHAR", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(close), for: .touchUpInside)
         return button
@@ -21,14 +22,14 @@ class ResultViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = UIColor.mainBackgroundColor()
         tableView.dataSource = self
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = UIColor.mainBackgroundColor()
         setUpConstraint()
     }
 
