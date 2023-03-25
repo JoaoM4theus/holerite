@@ -49,12 +49,12 @@ class MainViewController: UIViewController {
         navigationController?.present(viewController, animated: true)
     }
 
-    func setUpBackgroundsColors() {
+    private func setUpBackgroundsColors() {
         navigationController?.navigationBar.backgroundColor = .white
         view.backgroundColor = UIColor.mainBackgroundColor()
     }
     
-    func setUpConstraint() {
+    private func setUpConstraint() {
         view.addSubview(salaryTextField)
         view.addSubview(discountTextField)
         view.addSubview(calculateButton)

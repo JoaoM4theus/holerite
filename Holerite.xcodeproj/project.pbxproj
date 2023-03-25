@@ -14,6 +14,7 @@
 		DC1ECB7F29CE68F90061A670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1ECB7D29CE68F90061A670 /* LaunchScreen.storyboard */; };
 		DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8829CF2C710061A670 /* ResultViewController.swift */; };
 		DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8B29CF31350061A670 /* UIColor.swift */; };
+		DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DC1ECB8029CE68F90061A670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1ECB8829CF2C710061A670 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		DC1ECB8B29CF31350061A670 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		DC1ECB8729CF2C4A0061A670 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				DC1ECB8D29CF32A10061A670 /* Cell */,
 				DC1ECB8829CF2C710061A670 /* ResultViewController.swift */,
 			);
 			path = Result;
@@ -92,6 +95,14 @@
 				DC1ECB8B29CF31350061A670 /* UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DC1ECB8D29CF32A10061A670 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				DC1ECB7329CE68F70061A670 /* AppDelegate.swift in Sources */,
 				DC1ECB7529CE68F70061A670 /* SceneDelegate.swift in Sources */,
 				DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */,
+				DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */,
 				DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
