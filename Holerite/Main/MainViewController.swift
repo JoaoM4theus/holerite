@@ -33,6 +33,7 @@ class MainViewController: UIViewController {
         button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didPressCalculate), for: .touchUpInside)
         return button
     }()
 
@@ -43,6 +44,11 @@ class MainViewController: UIViewController {
         setUpConstraint()
     }
     
+    @objc func didPressCalculate() {
+        let viewController = ResultViewController()
+        navigationController?.present(viewController, animated: true)
+    }
+
     func setUpBackgroundsColors() {
         navigationController?.navigationBar.backgroundColor = .white
         view.backgroundColor = UIColor(red: 0.938, green: 0.938, blue: 0.938, alpha: 1)
