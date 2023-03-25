@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
         textField.keyboardType = .numberPad
         textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.tag = 2
         return textField
     }()
 
@@ -42,12 +43,23 @@ class MainViewController: UIViewController {
     }()
 
     private var amount: Int = 0
+    private let viewModel: MainViewModel
     
+    init(viewModel: MainViewModel = MainViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Holerite"
         setUpBackgroundsColors()
         setUpConstraint()
+        viewModel.delegate = self
     }
     
     @objc func didPressCalculate() {
@@ -86,25 +98,75 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: MainViewModelDelegate {
+    func mainViewModelDelegate(updateAmount text: String, type: AmountType) {
+        switch type {
+        case .salary:
+            salaryTextField.text = text
+        case .discount:
+            discountTextField.text = text
+        }
+    }
+}
+
 extension MainViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-
-        if let digit = Int(string) {
-            amount = amount * 10 + digit
-            textField.text = updateAmount()
-        }
-        
-        if string == "" {
-            amount = amount/10
-            textField.text = updateAmount()
-        }
+        let type = textField.tag == 2 ? AmountType.salary : AmountType.discount
+        viewModel.updateAmount(string: string, type: type)
         return false
     }
+
+}
+
+protocol MainViewModelDelegate: AnyObject {
+    func mainViewModelDelegate(updateAmount text: String, type: AmountType)
+}
+
+enum AmountType {
+    case salary
+    case discount
+}
+
+class MainViewModel {
+    private var amountSalary: Int = 0
+    private var amountDiscount: Int = 0
     
-    private func updateAmount() -> String? {
+    weak var delegate: MainViewModelDelegate?
+    
+    func updateAmount(string: String, type: AmountType) {
+        var amountHandler = type == .discount ? amountDiscount : amountSalary
+        if amountHandler >= 999999999 { return }
+        let action: () -> Void = {
+            type == .discount ? updateDiscount() : updateSalary()
+        }
+        if let digit = Int(string) {
+            amountHandler = amountHandler * 10 + digit
+            action()
+        }
+        if string == "" {
+            amountHandler = amountHandler/10
+            action()
+        }
+
+        func updateDiscount() {
+            if let amount = updateAmountValue(amount: amountDiscount) {
+                amountDiscount = amountHandler
+                delegate?.mainViewModelDelegate(updateAmount: amount, type: type)
+            }
+        }
+
+        func updateSalary() {
+            if let amount = updateAmountValue(amount: amountSalary) {
+                amountSalary = amountHandler
+                delegate?.mainViewModelDelegate(updateAmount: amount, type: type)
+            }
+        }
+    }
+
+    private func updateAmountValue(amount: Int) -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
         let amount = Double(amount/100) + Double(amount%100)/100
