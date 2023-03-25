@@ -9,8 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    lazy var salaryTextField: UITextField = {
-        let textField = UITextField()
+    lazy var salaryTextField: CustomTextField = {
+        let textField = CustomTextField()
         textField.placeholder = "Salário bruto"
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
         return textField
     }()
 
-    lazy var discountTextField: UITextField = {
-        let textField = UITextField()
+    lazy var discountTextField: CustomTextField = {
+        let textField = CustomTextField()
         textField.placeholder = "Descontos"
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
@@ -42,24 +42,11 @@ class MainViewController: UIViewController {
         return button
     }()
 
-    private var amount: Int = 0
-    private let viewModel: MainViewModel
-    
-    init(viewModel: MainViewModel = MainViewModel()) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Holerite"
         setUpBackgroundsColors()
         setUpConstraint()
-        viewModel.delegate = self
     }
     
     @objc func didPressCalculate() {
@@ -98,78 +85,15 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: MainViewModelDelegate {
-    func mainViewModelDelegate(updateAmount text: String, type: AmountType) {
-        switch type {
-        case .salary:
-            salaryTextField.text = text
-        case .discount:
-            discountTextField.text = text
-        }
-    }
-}
-
 extension MainViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let type = textField.tag == 2 ? AmountType.salary : AmountType.discount
-        viewModel.updateAmount(string: string, type: type)
+        if let textField = textField as? CustomTextField {
+            textField.updateAmount(string: string)
+        }
         return false
     }
 
-}
-
-protocol MainViewModelDelegate: AnyObject {
-    func mainViewModelDelegate(updateAmount text: String, type: AmountType)
-}
-
-enum AmountType {
-    case salary
-    case discount
-}
-
-class MainViewModel {
-    private var amountSalary: Int = 0
-    private var amountDiscount: Int = 0
-    
-    weak var delegate: MainViewModelDelegate?
-    
-    func updateAmount(string: String, type: AmountType) {
-        var amountHandler = type == .discount ? amountDiscount : amountSalary
-        if amountHandler >= 999999999 { return }
-        let action: () -> Void = {
-            type == .discount ? updateDiscount() : updateSalary()
-        }
-        if let digit = Int(string) {
-            amountHandler = amountHandler * 10 + digit
-            action()
-        }
-        if string == "" {
-            amountHandler = amountHandler/10
-            action()
-        }
-
-        func updateDiscount() {
-            if let amount = updateAmountValue(amount: amountDiscount) {
-                amountDiscount = amountHandler
-                delegate?.mainViewModelDelegate(updateAmount: amount, type: type)
-            }
-        }
-
-        func updateSalary() {
-            if let amount = updateAmountValue(amount: amountSalary) {
-                amountSalary = amountHandler
-                delegate?.mainViewModelDelegate(updateAmount: amount, type: type)
-            }
-        }
-    }
-
-    private func updateAmountValue(amount: Int) -> String? {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = NumberFormatter.Style.currency
-        let amount = Double(amount/100) + Double(amount%100)/100
-        return formatter.string(from: NSNumber(value: amount))
-    }
 }
