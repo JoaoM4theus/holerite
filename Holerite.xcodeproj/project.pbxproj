@@ -15,6 +15,7 @@
 		DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8829CF2C710061A670 /* ResultViewController.swift */; };
 		DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8B29CF31350061A670 /* UIColor.swift */; };
 		DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */; };
+		DC1ECB9729CF76870061A670 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9629CF76870061A670 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DC1ECB8829CF2C710061A670 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		DC1ECB8B29CF31350061A670 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		DC1ECB9629CF76870061A670 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		DC1ECB7129CE68F70061A670 /* Holerite */ = {
 			isa = PBXGroup;
 			children = (
+				DC1ECB9529CF766A0061A670 /* Kit */,
 				DC1ECB8A29CF31270061A670 /* Extensions */,
 				DC1ECB8729CF2C4A0061A670 /* Result */,
 				DC1ECB8629CF2C3D0061A670 /* Main */,
@@ -103,6 +106,14 @@
 				DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		DC1ECB9529CF766A0061A670 /* Kit */ = {
+			isa = PBXGroup;
+			children = (
+				DC1ECB9629CF76870061A670 /* CustomTextField.swift */,
+			);
+			path = Kit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1ECB9729CF76870061A670 /* CustomTextField.swift in Sources */,
 				DC1ECB7729CE68F70061A670 /* MainViewController.swift in Sources */,
 				DC1ECB7329CE68F70061A670 /* AppDelegate.swift in Sources */,
 				DC1ECB7529CE68F70061A670 /* SceneDelegate.swift in Sources */,
