@@ -37,7 +37,7 @@ class ResultViewController: UIViewController {
     }
 
     @objc func close() {
-        print("close")
+        dismiss(animated: true)
     }
     
     private func setUpConstraint() {

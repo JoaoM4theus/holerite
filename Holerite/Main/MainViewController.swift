@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Salário bruto"
         textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -21,6 +23,8 @@ class MainViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Descontos"
         textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "Roboto-Regular", size: 16)
         return textField
@@ -37,6 +41,8 @@ class MainViewController: UIViewController {
         return button
     }()
 
+    private var amount: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Holerite"
@@ -80,3 +86,28 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+
+        if let digit = Int(string) {
+            amount = amount * 10 + digit
+            textField.text = updateAmount()
+        }
+        
+        if string == "" {
+            amount = amount/10
+            textField.text = updateAmount()
+        }
+        return false
+    }
+    
+    private func updateAmount() -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.currency
+        let amount = Double(amount/100) + Double(amount%100)/100
+        return formatter.string(from: NSNumber(value: amount))
+    }
+}
