@@ -24,6 +24,9 @@ class ResultViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor.mainBackgroundColor()
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(ResultTableViewCell.self,
+                           forCellReuseIdentifier: ResultTableViewCell.identifier)
         return tableView
     }()
     
@@ -57,16 +60,21 @@ class ResultViewController: UIViewController {
     }
 }
 
-extension ResultViewController: UITableViewDataSource {
+extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "Testando"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell",
+                                                       for: indexPath) as? ResultTableViewCell else {
+            return UITableViewCell()
+        }
         return cell
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        60
+    }
 }
