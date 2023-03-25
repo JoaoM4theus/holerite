@@ -9,7 +9,8 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-    private var amount: Int = 0
+    private var amount: Int = .zero
+    var formattedValue: Double = .zero
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,9 +21,10 @@ class CustomTextField: UITextField {
     }
     
     func updateAmount(string: String) {
-        if amount >= 999_999_999 { return }
         if let digit = Int(string) {
-            amount = amount * 10 + digit
+            if amount <= 999_999_999 {
+                amount = amount * 10 + digit
+            }
             self.text = updateAmount()
         }
         
@@ -35,8 +37,8 @@ class CustomTextField: UITextField {
     private func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
-        let amount = Double(amount/100) + Double(amount%100)/100
-        return formatter.string(from: NSNumber(value: amount))
+        formattedValue = Double(amount/100) + Double(amount%100)/100
+        return formatter.string(from: NSNumber(value: formattedValue))
     }
 
 }

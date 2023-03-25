@@ -16,6 +16,7 @@
 		DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8B29CF31350061A670 /* UIColor.swift */; };
 		DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */; };
 		DC1ECB9729CF76870061A670 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9629CF76870061A670 /* CustomTextField.swift */; };
+		DC1ECB9A29CF7E920061A670 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9929CF7E920061A670 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DC1ECB8B29CF31350061A670 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		DC1ECB9629CF76870061A670 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		DC1ECB9929CF7E920061A670 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		DC1ECB8629CF2C3D0061A670 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DC1ECB9829CF7E840061A670 /* ViewModel */,
 				DC1ECB7629CE68F70061A670 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -114,6 +117,14 @@
 				DC1ECB9629CF76870061A670 /* CustomTextField.swift */,
 			);
 			path = Kit;
+			sourceTree = "<group>";
+		};
+		DC1ECB9829CF7E840061A670 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC1ECB9929CF7E920061A670 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */,
 				DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */,
 				DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */,
+				DC1ECB9A29CF7E920061A670 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

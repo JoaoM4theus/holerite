@@ -42,6 +42,17 @@ class MainViewController: UIViewController {
         return button
     }()
 
+    private let viewModel: MainViewModel
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        viewModel = MainViewModel()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Holerite"
@@ -50,8 +61,13 @@ class MainViewController: UIViewController {
     }
     
     @objc func didPressCalculate() {
-        let viewController = ResultViewController()
-        navigationController?.present(viewController, animated: true)
+        if salaryTextField.formattedValue > 0 && discountTextField.formattedValue >= 0 {
+//            let viewController = ResultViewController()
+//            navigationController?.present(viewController, animated: true)
+            viewModel.calculate(salary: salaryTextField.formattedValue, discount: discountTextField.formattedValue)
+        } else {
+            print("nao deve abrir")
+        }
     }
 
     private func setUpBackgroundsColors() {
