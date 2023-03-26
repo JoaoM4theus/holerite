@@ -14,18 +14,21 @@ class ResultTableViewCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.font = UIFont(name: "Roboto-Bold", size: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont(name: "Roboto-Bold", size: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var percentageLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont(name: "Roboto-Bold", size: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,11 +79,9 @@ class ResultTableViewCell: UITableViewCell {
             
             valueLabel.textColor = color
         } else {
-            let quote = "R$ 0,00"
-            let font = UIFont.systemFont(ofSize: 14)
-            let attributes = [NSAttributedString.Key.font: font]
-            let attributedQuote = NSAttributedString(string: quote, attributes: attributes)
-            valueLabel.attributedText = attributedQuote
+            valueLabel.textColor = UIColor(red: 0.558, green: 0.558, blue: 0.558, alpha: 1)
+            valueLabel.textAlignment = .right
+            valueLabel.attributedText = NSMutableAttributedString(string: "R$ 0,00", attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.kern: -0.3])
         }
         
         if let percentage = holerite.percentage {

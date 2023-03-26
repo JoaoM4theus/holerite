@@ -14,6 +14,7 @@ class ResultViewController: UIViewController {
         button.backgroundColor = .clear
         button.setTitle("FECHAR", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(close), for: .touchUpInside)
         return button

@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
         textField.delegate = self
+        textField.font = UIFont(name: "Roboto-Regular", size: 16)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.tag = 2
         return textField
@@ -26,8 +27,8 @@ class MainViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
         textField.delegate = self
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "Roboto-Regular", size: 16)
+        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
