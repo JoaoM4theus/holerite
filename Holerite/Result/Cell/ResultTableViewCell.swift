@@ -13,7 +13,6 @@ class ResultTableViewCell: UITableViewCell {
 
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Salario bruto"
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -21,14 +20,12 @@ class ResultTableViewCell: UITableViewCell {
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.text = "R$ 2000,00"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var percentageLabel: UILabel = {
         let label = UILabel()
-        label.text = "8%"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -66,6 +63,31 @@ class ResultTableViewCell: UITableViewCell {
             valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
         ].forEach { constraint in
             constraint.isActive = true
+        }
+    }
+    
+    func configure(holerite: HoleriteInfo) {
+        titleLabel.text = holerite.title
+        
+        if holerite.value > 0 {
+            valueLabel.text = holerite.value.toCurrencyString()
+            let color = holerite.type == .summation ?
+            UIColor(red: 0.257, green: 0.65, blue: 0.249, alpha: 1) : UIColor(red: 0.858, green: 0.26, blue: 0.222, alpha: 1)
+            
+            valueLabel.textColor = color
+        } else {
+            let quote = "R$ 0,00"
+            let font = UIFont.systemFont(ofSize: 14)
+            let attributes = [NSAttributedString.Key.font: font]
+            let attributedQuote = NSAttributedString(string: quote, attributes: attributes)
+            valueLabel.attributedText = attributedQuote
+        }
+        
+        if let percentage = holerite.percentage {
+            percentageLabel.text = percentage
+            percentageLabel.textColor = UIColor(red: 0.558, green: 0.558, blue: 0.558, alpha: 1)
+        } else {
+            percentageLabel.removeFromSuperview()
         }
     }
 }

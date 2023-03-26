@@ -30,6 +30,17 @@ class ResultViewController: UIViewController {
         return tableView
     }()
     
+    let viewModel: ResultViewModel
+    
+    init(viewModel: ResultViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.mainBackgroundColor()
@@ -37,7 +48,7 @@ class ResultViewController: UIViewController {
     }
 
     @objc func close() {
-        dismiss(animated: true)
+        presentingViewController?.dismiss(animated: true)
     }
     
     private func setUpConstraint() {
@@ -63,7 +74,7 @@ class ResultViewController: UIViewController {
 extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        viewModel.model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,6 +82,7 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
                                                        for: indexPath) as? ResultTableViewCell else {
             return UITableViewCell()
         }
+        cell.configure(holerite: viewModel.model[indexPath.row])
         return cell
     }
 

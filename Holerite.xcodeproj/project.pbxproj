@@ -17,6 +17,8 @@
 		DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */; };
 		DC1ECB9729CF76870061A670 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9629CF76870061A670 /* CustomTextField.swift */; };
 		DC1ECB9A29CF7E920061A670 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9929CF7E920061A670 /* MainViewModel.swift */; };
+		DC1ECB9D29D095DB0061A670 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9C29D095DB0061A670 /* ResultViewModel.swift */; };
+		DC1ECB9F29D097BE0061A670 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECB9E29D097BE0061A670 /* Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		DC1ECB8E29CF32B30061A670 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		DC1ECB9629CF76870061A670 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DC1ECB9929CF7E920061A670 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		DC1ECB9C29D095DB0061A670 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		DC1ECB9E29D097BE0061A670 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		DC1ECB8729CF2C4A0061A670 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				DC1ECB9B29D095C40061A670 /* ViewModel */,
 				DC1ECB8D29CF32A10061A670 /* Cell */,
 				DC1ECB8829CF2C710061A670 /* ResultViewController.swift */,
 			);
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				DC1ECB8B29CF31350061A670 /* UIColor.swift */,
+				DC1ECB9E29D097BE0061A670 /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -123,6 +129,14 @@
 			isa = PBXGroup;
 			children = (
 				DC1ECB9929CF7E920061A670 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DC1ECB9B29D095C40061A670 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC1ECB9C29D095DB0061A670 /* ResultViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -198,12 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1ECB9729CF76870061A670 /* CustomTextField.swift in Sources */,
+				DC1ECB9D29D095DB0061A670 /* ResultViewModel.swift in Sources */,
 				DC1ECB7729CE68F70061A670 /* MainViewController.swift in Sources */,
 				DC1ECB7329CE68F70061A670 /* AppDelegate.swift in Sources */,
 				DC1ECB7529CE68F70061A670 /* SceneDelegate.swift in Sources */,
 				DC1ECB8929CF2C710061A670 /* ResultViewController.swift in Sources */,
 				DC1ECB8F29CF32B30061A670 /* ResultTableViewCell.swift in Sources */,
 				DC1ECB8C29CF31350061A670 /* UIColor.swift in Sources */,
+				DC1ECB9F29D097BE0061A670 /* Double.swift in Sources */,
 				DC1ECB9A29CF7E920061A670 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,10 +7,17 @@
 
 import Foundation
 
+protocol MainViewModelDelegate: AnyObject {
+    func mainViewModel(pushViewController info: [HoleriteInfo])
+}
+
 class MainViewModel {
     
+    weak var delegate: MainViewModelDelegate?
+    var holerite = [HoleriteInfo]()
+    
     func calculate(salary: Double, discount: Double) {
-        var holerite = [HoleriteInfo]()
+        holerite.removeAll()
         var salaryWithDiscount = salary - discount
         holerite.append(HoleriteInfo(value: salary, title: "Salário Bruto", type: .summation))
         holerite.append(HoleriteInfo(value: discount, title: "Descontos", type: .discount))
@@ -19,12 +26,12 @@ class MainViewModel {
         salaryWithDiscount -= inss.value
         holerite.append(HoleriteInfo(value: inss.value, title: "Desconto INSS", percentage: inss.percentage, type: .discount))
         
-        let irrf = calculateIRRF(salary: salaryWithDiscount)
+        let irrf = calculateIRRF(salary: salaryWithDiscount + discount)
         salaryWithDiscount -= irrf.value
         holerite.append(HoleriteInfo(value: irrf.value, title: "Desconto IRRF", percentage: irrf.percentage, type: .discount))
         
         holerite.append(HoleriteInfo(value: salaryWithDiscount, title: "Salário Líquido", type: .summation))
-        
+        delegate?.mainViewModel(pushViewController: holerite)
     }
 
     private func calculateINSS(salary: Double) -> (percentage: String?, value: Double) {
@@ -34,20 +41,20 @@ class MainViewModel {
         if salary >= 1212.01 && salary <= 2427.35 {
             let discountOne = (7.5/100) * 1212
             let discountTwo = (9/100) * (salary - 1212.01)
-            return ("\(7.5 + 9)%", (discountOne + discountTwo))
+            return ("9%", (discountOne + discountTwo))
         }
         if salary >= 2427.36 && salary <= 3641.03 {
             let discountOne = (7.5/100) * 1212
             let discountTwo = (9/100) * (2427.35 - 1212.01)
             let discountThree = (12/100) * (salary - 2427.36)
-            return ("\(7.5 + 9 + 12)%", (discountOne + discountTwo + discountThree))
+            return ("12%", (discountOne + discountTwo + discountThree))
         }
-        if salary <= 3641.04 && salary <= 7087.22 {
+        if salary >= 3641.04 && salary <= 7087.22 {
             let discountOne = (7.5/100) * 1212
             let discountTwo = (9/100) * (2427.35 - 1212.01)
             let discountThree = (12/100) * (3641.03 - 2427.36)
-            let discountFour = (14/10) * (salary - 3641.04)
-            return ("\(7.5 + 9 + 12 + 14)%", (discountOne + discountTwo + discountThree + discountFour))
+            let discountFour = (14/100) * (salary - 3641.04)
+            return ("14%", (discountOne + discountTwo + discountThree + discountFour))
         }
         
         return (nil, 828.39)

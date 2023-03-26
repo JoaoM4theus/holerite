@@ -56,18 +56,25 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Holerite"
+        viewModel.delegate = self
         setUpBackgroundsColors()
         setUpConstraint()
     }
     
     @objc func didPressCalculate() {
         if salaryTextField.formattedValue > 0 && discountTextField.formattedValue >= 0 {
-//            let viewController = ResultViewController()
-//            navigationController?.present(viewController, animated: true)
             viewModel.calculate(salary: salaryTextField.formattedValue, discount: discountTextField.formattedValue)
         } else {
-            print("nao deve abrir")
+            dontOpenAlert()
         }
+    }
+
+    private func dontOpenAlert() {
+        let alert = UIAlertController(title: "Salário bruto indevido",
+                                      message: "Adicione um salário bruto maior que 0, por favor.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
     }
 
     private func setUpBackgroundsColors() {
@@ -112,4 +119,14 @@ extension MainViewController: UITextFieldDelegate {
         return false
     }
 
+}
+
+extension MainViewController: MainViewModelDelegate {
+    func mainViewModel(pushViewController info: [HoleriteInfo]) {
+        let viewModel = ResultViewModel(model: info)
+        let viewController = ResultViewController(viewModel: viewModel)
+        navigationController?.present(viewController, animated: true)
+    }
+    
+    
 }
