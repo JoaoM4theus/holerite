@@ -58,8 +58,19 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         title = "Holerite"
         viewModel.delegate = self
+        setUpNavBar()
         setUpBackgroundsColors()
         setUpConstraint()
+    }
+    
+    func setUpNavBar() {
+        let navBar = self.navigationController!.navigationBar
+
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.configureWithOpaqueBackground()
+
+        navBar.standardAppearance = standardAppearance
+        navBar.scrollEdgeAppearance = standardAppearance
     }
     
     @objc func didPressCalculate() {
