@@ -38,21 +38,18 @@ class MainViewModel {
         if salary <= 1212 {
             return ("7.5%", salary * (7.5/100))
         }
+        let discountOne = (7.5/100) * 1212
         if salary >= 1212.01 && salary <= 2427.35 {
-            let discountOne = (7.5/100) * 1212
             let discountTwo = (9/100) * (salary - 1212.01)
             return ("9%", (discountOne + discountTwo))
         }
+        let discountTwo = (9/100) * (salary - 1212.01)
         if salary >= 2427.36 && salary <= 3641.03 {
-            let discountOne = (7.5/100) * 1212
-            let discountTwo = (9/100) * (2427.35 - 1212.01)
             let discountThree = (12/100) * (salary - 2427.36)
             return ("12%", (discountOne + discountTwo + discountThree))
         }
+        let discountThree = (12/100) * (salary - 2427.36)
         if salary >= 3641.04 && salary <= 7087.22 {
-            let discountOne = (7.5/100) * 1212
-            let discountTwo = (9/100) * (2427.35 - 1212.01)
-            let discountThree = (12/100) * (3641.03 - 2427.36)
             let discountFour = (14/100) * (salary - 3641.04)
             return ("14%", (discountOne + discountTwo + discountThree + discountFour))
         }

@@ -98,8 +98,7 @@ class MainViewController: UIViewController {
         view.addSubview(salaryTextField)
         view.addSubview(discountTextField)
         view.addSubview(calculateButton)
-        
-        [
+        NSLayoutConstraint.activate([
             salaryTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 137),
             salaryTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             salaryTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
@@ -114,9 +113,7 @@ class MainViewController: UIViewController {
             calculateButton.widthAnchor.constraint(equalToConstant: 150),
             calculateButton.heightAnchor.constraint(equalToConstant: 50),
             calculateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ].forEach { constraint in
-            constraint.isActive = true
-        }
+        ])
     }
 }
 
